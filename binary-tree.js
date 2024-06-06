@@ -16,17 +16,71 @@ class BinaryTree {
   /** minDepth(): return the minimum depth of the tree -- that is,
    * the length of the shortest path from the root to a leaf. */
 
-  minDepth() {}
+  minDepth() {
+    if (!this.root) return 0;
+    let min = Infinity;
+    let toVisitStack = [[this.root, 1]];
+    while (toVisitStack.length) {
+      let [current, depth] = toVisitStack.pop();
+      if (!current.left && !current.right) {
+        min = Math.min(min, depth);
+      }
+      if (current.left) toVisitStack.push([current.left, depth + 1]);
+      if (current.right) toVisitStack.push([current.right, depth + 1]);
+    }
+    return min;
+  }
 
   /** maxDepth(): return the maximum depth of the tree -- that is,
    * the length of the longest path from the root to a leaf. */
 
-  maxDepth() {}
+  maxDepth() {
+    if (!this.root) return 0;
+    let max = 0;
+    let toVisitStack = [[this.root, 1]];
+    while (toVisitStack.length) {
+      let [current, depth] = toVisitStack.pop();
+      if (!current.left && !current.right) {
+        max = Math.max(max, depth);
+      }
+      if (current.left) toVisitStack.push([current.left, depth + 1]);
+      if (current.right) toVisitStack.push([current.right, depth + 1]);
+    }
+    return max;
+  }
 
   /** maxSum(): return the maximum sum you can obtain by traveling along a path in the tree.
    * The path doesn't need to start at the root, but you can't visit a node more than once. */
 
-  maxSum() {}
+  maxSum() {
+    if (!this.root) return 0;
+    let maxSum = -Infinity;
+    const stack = [];
+    const nodeToMaxPath = new Map();
+
+    stack.push([this.root, false]);
+
+    while (stack.length > 0) {
+      const [node, visited] = stack.pop();
+
+      if (node === null) continue;
+
+      if (visited) {
+        const leftMax = Math.max(nodeToMaxPath.get(node.left) || 0, 0);
+        const rightMax = Math.max(nodeToMaxPath.get(node.right) || 0, 0);
+        const currentPathSum = node.val + leftMax + rightMax;
+
+        maxSum = Math.max(maxSum, currentPathSum);
+        nodeToMaxPath.set(node, node.val + Math.max(leftMax, rightMax));
+      } else {
+        stack.push([node, true]);
+        stack.push([node.right, false]);
+        stack.push([node.left, false]);
+      }
+    }
+
+    return maxSum;
+  }
 
   /** nextLarger(lowerBound): return the smallest value in the tree
    * which is larger than lowerBound. Return null if no such value exists. */
@@ -55,5 +109,5 @@ class BinaryTree {
 
   lowestCommonAncestor(node1, node2) {}
 }
-console.log("binary trees");
+
 module.exports = { BinaryTree, BinaryTreeNode };

@@ -23,54 +23,49 @@ beforeEach(function () {
   let root = new BinaryTreeNode(6, node1, node2);
   largeTree = new BinaryTree(root);
 });
-describe("test", function () {
-  it("test", function () {
-    expect(1).toBe(1);
-  });
-});
 
-/*describe("minDepth", function() {
-  it("handles simple trees", function() {
+describe("minDepth", function () {
+  it("handles simple trees", function () {
     expect(smallTree.minDepth()).toBe(2);
   });
 
-  it("handles more complex trees", function() {
+  it("handles more complex trees", function () {
     expect(largeTree.minDepth()).toBe(2);
   });
 
-  it("handles empty trees", function() {
+  it("handles empty trees", function () {
     expect(emptyTree.minDepth()).toBe(0);
   });
 });
 
-describe("maxDepth", function() {
-  it("handles simple trees", function() {
+describe("maxDepth", function () {
+  it("handles simple trees", function () {
     expect(smallTree.maxDepth()).toBe(2);
   });
 
-  it("handles more complex trees", function() {
+  it("handles more complex trees", function () {
     expect(largeTree.maxDepth()).toBe(4);
   });
 
-  it("handles empty trees", function() {
+  it("handles empty trees", function () {
     expect(emptyTree.maxDepth()).toBe(0);
   });
 });
 
-describe("maxSum", function() {
-  it("handles simple trees", function() {
+describe("maxSum", function () {
+  it("handles simple trees", function () {
     expect(smallTree.maxSum()).toBe(16);
   });
 
-  it("handles empty trees", function() {
+  it("handles empty trees", function () {
     expect(emptyTree.maxSum()).toBe(0);
   });
 
-  it("handles more complex trees", function() {
+  it("handles more complex trees", function () {
     expect(largeTree.maxSum()).toBe(21);
   });
 
-  it("handles negative values", function() {
+  it("handles negative values", function () {
     let node100 = new BinaryTreeNode(100);
     let node8 = new BinaryTreeNode(8);
     let nodeNeg4 = new BinaryTreeNode(-4);
@@ -83,7 +78,7 @@ describe("maxSum", function() {
   });
 });
 
-describe("nextLarger", function() {
+/*describe("nextLarger", function() {
   it("handles simple trees", function() {
     expect(smallTree.nextLarger(4)).toBe(5);
     expect(smallTree.nextLarger(5)).toBe(6);

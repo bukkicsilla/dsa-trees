@@ -55,7 +55,7 @@ class Tree {
     return count;
   }
 }
-console.log("trees");
-let t = new Tree(new TreeNode(1, [new TreeNode(2), new TreeNode(3)]));
-console.log(t.sumValues()); // 6
+
+//let t = new Tree(new TreeNode(1, [new TreeNode(2), new TreeNode(3)]));
+//console.log(t.sumValues()); // 6
 module.exports = { Tree, TreeNode };
