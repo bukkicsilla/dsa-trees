@@ -78,18 +78,18 @@ describe("maxSum", function () {
   });
 });
 
-/*describe("nextLarger", function() {
-  it("handles simple trees", function() {
+describe("nextLarger", function () {
+  it("handles simple trees", function () {
     expect(smallTree.nextLarger(4)).toBe(5);
     expect(smallTree.nextLarger(5)).toBe(6);
     expect(smallTree.nextLarger(6)).toBe(null);
   });
 
-  it("handles empty trees", function() {
+  it("handles empty trees", function () {
     expect(emptyTree.nextLarger(0)).toBe(null);
   });
 
-  it("handles more complex trees", function() {
+  it("handles more complex trees", function () {
     expect(largeTree.nextLarger(1)).toBe(2);
     expect(largeTree.nextLarger(2)).toBe(3);
     expect(largeTree.nextLarger(3)).toBe(5);
@@ -99,8 +99,8 @@ describe("maxSum", function () {
   });
 });
 
-describe("areCousins", function() {
-  it("returns true if they are cousins, false if not", function() {
+describe("areCousins", function () {
+  it("returns true if they are cousins, false if not", function () {
     let n7 = new BinaryTreeNode(7);
     let n6 = new BinaryTreeNode(6);
     let n5 = new BinaryTreeNode(5);
@@ -122,7 +122,7 @@ describe("areCousins", function() {
   });
 });
 
-describe("serialize and deserialize", function() {
+/*describe("serialize and deserialize", function() {
   let myTree;
 
   beforeEach(function() {

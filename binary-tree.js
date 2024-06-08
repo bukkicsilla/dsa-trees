@@ -85,13 +85,56 @@ class BinaryTree {
   /** nextLarger(lowerBound): return the smallest value in the tree
    * which is larger than lowerBound. Return null if no such value exists. */
 
-  nextLarger(lowerBound) {}
+  nextLarger(lowerBound) {
+    if (!this.root) return null;
+    const queue = [this.root];
+    const largerValues = [];
+    while (queue.length) {
+      const current = queue.shift();
+      if (current.val > lowerBound) largerValues.push(current.val);
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+    }
+    console.log("larger Values", largerValues);
+    return largerValues.length ? Math.min(...largerValues) : null;
+  }
 
   /** Further study!
    * areCousins(node1, node2): determine whether two nodes are cousins
    * (i.e. are at the same level but have different parents. ) */
 
-  areCousins(node1, node2) {}
+  areCousins(node1, node2) {
+    if (node1 === this.root || node2 === this.root) return false;
+
+    function findLevelAndParent(
+      nodeToFind,
+      currentNode,
+      level = 0,
+      data = { level: 0, parent: null }
+    ) {
+      if (data.parent) return data;
+      if (currentNode.left === nodeToFind || currentNode.right === nodeToFind) {
+        data.level = level + 1;
+        data.parent = currentNode;
+      }
+      if (currentNode.left) {
+        findLevelAndParent(nodeToFind, currentNode.left, level + 1, data);
+      }
+      if (currentNode.right) {
+        findLevelAndParent(nodeToFind, currentNode.right, level + 1, data);
+      }
+      return data;
+    }
+
+    let node1Info = findLevelAndParent(node1, this.root);
+    let node2Info = findLevelAndParent(node2, this.root);
+
+    let sameLevel =
+      node1Info && node2Info && node1Info.level === node2Info.level;
+    let differentParents =
+      node1Info && node2Info && node1Info.parent !== node2Info.parent;
+    return sameLevel && differentParents;
+  }
 
   /** Further study!
    * serialize(tree): serialize the BinaryTree object tree into a string. */
